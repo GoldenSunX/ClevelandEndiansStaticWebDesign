@@ -1,0 +1,298 @@
+/* Created (Andrew Fox 10/18): File defining site wide css rules for tables, divs, etc.
+Updated (Andrew Fox 10/18): Cleaned up unneeded css rules.
+Updated (Cole Albers 10/18): Added publication.html specific CSS.
+Updated (Andrew Fox 10/18): Added class for unordered list without style or indent.
+Updated (Sam Yinger 10/18): Added pictures.html and directions.html specific CSS.
+Updated (Adam Prater 10/18): Added teaching.html specific CSS.
+Updated (David Sinchok 10/19: Added index.html specific CSS, updated some table based CSS allowing for a cascading,
+                              and fixed the RubyMine syntax errors.
+Updated (Andrew Fox 10/19: Fixed the table rule not being applied properly.
+*/
+
+.header {
+    color: #B00000;
+    font-size: 50px;
+    line-height: 100px;
+    margin: 0;
+}
+.header_small h1, h2 {
+    color: #B00000;
+}
+.boxed {
+    background-size: auto;
+    background-clip: border-box;
+    background-image: linear-gradient(to left, rgb(255, 255, 255), rgb(250, 250, 250));
+    background-origin: padding-box;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    padding: 10px 10px 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: block;
+}
+#footer.boxed {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.background {
+    background-color: rgb(235, 235, 235);
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.unordered_list_no_indent {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+table.data_table {
+    border-spacing: 0px;
+    border-collapse: collapse;
+    text-align: left;
+}
+.data_table th {
+    border-bottom: 2px solid #B00000;
+    font-size: 16px;
+    padding: 10px 8px 10px;
+    color: #B00000;
+    text-align: left;
+}
+.data_table tr:hover a {
+    color: #B00000;
+}
+body.publications .data_table_header th {
+    padding: 10px 30px 10px;
+}
+.data_table td {
+    border-bottom: solid 1px rgb( 204, 204, 204);
+    padding: 8px 6px 8px;
+}
+body.publications .data_cell {
+    padding: 15px 30px 15px;
+}
+.data_table tr {
+    color: black;
+    font-size: 14px;
+}
+.data_table tr:hover  {
+    color: #B00000;
+}
+.people {
+    margin: 0;
+}
+.publications {
+    margin: 0;
+}
+
+/* teaching.html styling */
+
+.teaching {
+    margin: 0;
+}
+body.teaching .header {
+    background-color: rgb(234, 235, 235);
+    color: #B00000;
+    height: 85px;
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+}
+body.teaching .content .header h1 {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    font-size: 50px;
+    line-height: 100px;
+}
+body.teaching .content{
+    width:100%;
+    margin:0 auto;
+    float:left;
+    background-color: rgb(234, 235, 235);
+    background-size: cover;
+    color: silver;
+    height: 100%;
+    text-align: center;
+    text-decoration: none;
+}
+body.teaching .card h1.fix {
+    line-height:75px;
+    margin-top: -2px;
+}
+body.teaching ul li {
+    list-style-type: none;
+}
+body.teaching .content h1 {
+    font-size: 36px;
+    text-align: center;
+}
+body.teaching .card {
+    height:60px;
+    width: 300px;
+    display: inline-block;
+    overflow: hidden;
+    background-color: #B00000;
+    margin: 20px;
+    padding: 15px;
+    text-align: left;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .1), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
+    -webkit-transition: height 2s; /* Safari */
+    transition: height 2s;
+    -webkit-transition-delay: .25s; /* Safari */
+    transition-delay: .25s;
+    border-radius: 5px;
+    color: rgb(234, 235, 235);
+    font-size: 16px;
+}
+body.teaching .oneEl:hover {
+    height: 100px
+}
+body.teaching .twoEl:hover {
+    height: 175px;
+}
+body.teaching .threeEl:hover {
+    height: 200px;
+}
+body.teaching .other:hover {
+    height: 275px;
+}
+body.teaching .card h1 {
+    line-height: 25px;
+}
+body.teaching .card a {
+    color: rgb(234, 235, 235);
+    text-decoration: none;
+}
+body.teaching u {
+    text-decoration: none;
+}
+@-moz-document url-prefix() {
+    body.teaching .threeEl:hover {
+        height: 250px;
+    }
+}
+@-moz-document url-prefix() {
+    body.teaching .twoEl:hover {
+        height: 200px;
+    }
+}
+/* Header and footer styles */
+
+#osu_univ {
+    padding: 15px;
+}
+#listLinks {
+    list-style-type: none;
+}
+#name {
+    margin: 3px auto;
+    text-align: center;
+}
+#page_navbar div.links {
+    float:right;
+    padding: 15px;
+}
+#page_navbar div.links ul {
+    margin-bottom:20px;
+}
+#page_navbar div.links ul li {
+    list-style:none;
+    float:left;
+    margin-right:3em;
+}
+#page_navbar div.links ul li a {
+    color:#333;
+    text-decoration: none;
+}
+#page_navbar div.links ul li a:hover {
+    text-decoration: underline;
+}
+#footer_info {
+    padding: 5px;
+}
+ul.font_stand{
+    font-weight: bold;
+}
+#page_navbar {
+    clear:both;
+    margin:0;
+    padding:0;
+    background: #eaeaea url(http://web.cse.ohio-state.edu/~paolo/osu_navbar/images/bg-navbar_red.jpg) left bottom repeat-x;
+    overflow:hidden;
+}
+.font_stand {
+    font-family:'proximanova','Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size:14px;
+    line-height:1.5;
+    font-weight:normal;
+}
+#footer {
+    background-color: #ebebeb;
+}
+#popOut {
+    font-size: 24px;
+}
+#popOut:hover:after {
+    content: url(http://web.cse.ohio-state.edu/~jwdavis/Media/jwdavis-dispatch.jpg); /* no need for qoutes */
+    display: block;
+    border-style: none;
+}
+.photoSize{
+    width: 80%;
+}
+#h1 {
+    font-weight: bold;
+    font-size: 2em;
+}
+#pic {
+    font-weight: bold;
+    font-size: 3em;
+    margin: 3px auto;
+    text-align: center;
+}
+.doubleColumn {
+    border: 1px;
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.rowForm {
+    text-align: center;
+    vertical-align: center;
+}
+.picturesBorder {
+    background-size: auto;
+    background-clip: border-box;
+    background-image: linear-gradient(to left, rgb(255, 255, 255), rgb(250, 250, 250));
+    background-origin: padding-box;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    padding: 10px 10px 10px;
+    margin: 10px auto;
+    display: block;
+    width: 95%;
+}
+.photoSize#map {
+    width: 55%;
+}
+.directions {
+    margin: 0;
+}
+.pictures {
+    margin: 0;
+}
+.index {
+    margin: 0;
+}
+.para {
+    padding: 5px;
+}
+.circle_bullet li {
+    list-style-type: circle;
+    padding-bottom: 5px;
+}
+.logo {
+    height: 20px;
+}

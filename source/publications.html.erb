@@ -1,0 +1,111 @@
+<!-- Created (Cole Albers 10/18): HTML page for getting Publication information from the original website and displaying it. -->
+
+<div class="background">
+  <div style="margin-left: 5%; margin-right: 5%">
+    <div class="boxed">
+      <table class="data_table data_table_header data_row data_cell">
+        <caption><h1 class="header">Publications</h1></caption>
+        <tr class="data_row">
+          <th class="data_table_header">Title</th>
+          <th class="data_table_header">Authors</th>
+          <th class="data_table_header">Source</th>
+          <th class="data_table_header">Links</th>
+        </tr>
+        <%
+          require 'nokogiri'
+          require 'open-uri'
+          doc = Nokogiri::HTML(open('http://web.cse.ohio-state.edu/~jwdavis/publications.html'))
+          list = doc.xpath('//li')
+          list.each do |x|
+            publication = x.to_s
+
+            #This is where I parse the Title.
+            start_tag = publication.index '<li>'
+            end_tag = publication.index '<br>'
+            title = publication.slice! (start_tag)..(end_tag + 3)
+            title.slice! 0..3                                                         #Removes <li>
+            title.slice! end_tag - 4..end_tag                                         #Removes <br>
+
+            #This is where I parse the Authors.
+            start_tag = 0
+            end_tag = publication.index '<br>'
+            author = publication.slice! (start_tag)..(end_tag + 3)
+            author.slice! end_tag..end_tag + 3                                        #Removes <br>
+
+            #This is where I parse the Source.
+            start_tag = 0
+            end_tag = publication.index '<br>'
+            source = publication.slice! (start_tag)..(end_tag + 3)
+            source.slice! end_tag..end_tag + 3                                        #Removes <br>
+            if publication.include? '<i>'
+              start_tag = 0
+              end_tag = publication.index '<br>'
+              source += publication.slice! (start_tag)..(end_tag + 3)
+              source.slice! source.length - 4 .. source.length                        #Removes <br>
+            end
+
+            #This is where I parse the Link_PDF.
+            link_pdf = ''
+            if publication.include? 'href='
+              start_tag = publication.index '[<a href='
+              end_tag = publication.index '</a>'
+              link_pdf = publication.slice! (start_tag)..(end_tag + 3)
+              link_pdf.slice! end_tag - 6 ..end_tag + 3                               #Removes ">PDF</A>]<br>
+              link_pdf.slice! 0..9                                                    #Removes [<A HREF="
+              if link_pdf.include? '</a>'
+                link_pdf.slice! link_pdf.length - 9..link_pdf.length                  #Removes ">PDF</A>
+              end
+            end
+
+            if publication.include? ']<br>'
+              start_tag = publication.index ']<br>'
+              publication.slice! start_tag..start_tag + 4                             #Removes ]<br>
+            end
+
+            #This is where I parse the Award
+            if publication.include? '<b>'
+              start_tag = publication.index '<b>'
+              end_tag = publication.index '<br>'
+              award = publication.slice! (start_tag)..(end_tag + 3)
+              award.slice! end_tag..end_tag + 3                                        #Removes <br>
+              award.slice! 0..2                                                        #Removes <b>
+              award.slice! end_tag - 8..end_tag                                        #Removes <br>
+              if award.include? '<'
+                award.slice! award.index '<'                                           #Removes <
+              end
+              title += ' ' + award
+            end
+
+            #This is where I parse the Link_HTML
+            link_html = ''
+            if publication.include? 'href='
+              start_tag = publication.index '<a href='
+              end_tag = publication.index '</a>'
+              link_html = publication.slice! (start_tag)..(end_tag)
+              link_html.slice! end_tag - 9 ..end_tag + 3                                     #Removes ">HTML</A>]<br>
+              link_html.slice! 0..8                                                          #Removes [<A HREF="
+              if link_html.include? '">'
+                link_html.slice! link_html.length - 2..link_html.length                      #Removes ">
+              end
+            end
+        %>
+              <tr class="data_row">
+              <td class="data_cell"><%= title %></td>
+              <td class="data_cell"><%= author %></td>
+              <td class="data_cell"><%= source %></td>
+              <td class="data_cell">
+                <% if link_pdf != '' %>
+                <a href="http://web.cse.ohio-state.edu/~jwdavis/<%= link_pdf%>">PDF</a>
+                <% end %>
+                <% if link_html != '' %>
+                    <a href="<%= link_html%>">HTML</a>
+                <% end %>
+              </td>
+              </tr>
+        <%
+            end
+        %>
+      </table>
+    </div>
+  </div>
+</div>

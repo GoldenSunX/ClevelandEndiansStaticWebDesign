@@ -1,0 +1,171 @@
+<!-- Created (Adam Prater 10/13): HTML page for getting and displaying Teaching information from original website. -->
+
+<%
+  require 'mechanize'
+  agent = Mechanize.new
+  page = agent.get('http://web.cse.ohio-state.edu/~jwdavis/teaching.html')
+  year =   page.css('font b')
+  course = page.css('ul li')
+%>
+
+<div class="content">
+  <div class="header">
+    <h1>Teaching</h1>
+  </div>
+  <div class="card other">
+    <h1 class="fix"><%=year[1].text%></h1>
+    <ul>
+      <%=course[0]%>
+      <li><br/></li>
+      <%=course[1]%>
+    </ul>
+  </div>
+
+  <div class="card oneEl">
+    <h1><%=year[2].text%></h1>
+    <ul>
+      <%=course[2]%>
+    </ul>
+  </div>
+
+  <div class="card twoEl">
+    <h1><%=year[3].text%></h1>
+    <ul>
+      <%=course[3]%>
+      <li><br/></li>
+      <%=course[4]%>
+    </ul>
+  </div>
+
+  <div class="card twoEl">
+    <h1><%=year[4].text%></h1>
+    <ul>
+      <%=course[5]%>
+      <li><br/></li>
+      <%=course[6]%>
+    </ul>
+  </div>
+
+  <div class="card twoEl">
+    <h1><%=year[5].text%></h1>
+    <ul>
+     <%=course[7]%>
+      <li><br/></li>
+      <%=course[8]%>
+    </ul>
+  </div>
+
+  <div class="card twoEl">
+    <h1><%=year[6].text%></h1>
+    <ul>
+      <%=course[9]%>
+      <li><br/></li>
+      <%=course[10]%>
+    </ul>
+  </div>
+
+  <div class="card twoEl">
+    <h1><%=year[7].text%></h1>
+    <ul>
+      <%=course[11]%>
+      <li><br/></li>
+      <%=course[12]%>
+    </ul>
+  </div>
+
+  <div class="card twoEl">
+    <h1><%=year[8].text%></h1>
+    <ul>
+      <%=course[13]%>
+      <li><br/></li>
+      <%=course[14]%>
+    </ul>
+  </div>
+
+  <div class="card twoEl">
+    <h1><%=year[9].text%></h1>
+    <ul>
+      <%=course[15]%>
+      <li><br/></li>
+      <%=course[16]%>
+    </ul>
+  </div>
+
+  <div class="card oneEl">
+    <h1><%=year[10].text%></h1>
+    <ul>
+      <%=course[17]%>
+    </ul>
+  </div>
+
+  <div class="card twoEl">
+    <h1><%=year[11].text%></h1>
+    <ul>
+      <%=course[18]%>
+      <li><br/></li>
+      <%=course[19]%>
+    </ul>
+  </div>
+
+  <div class="card threeEl">
+    <h1><%=year[12].text%></h1>
+    <ul>
+      <%=course[20]%>
+      <li><br/></li>
+      <%=course[21]%>
+      <li><br/></li>
+      <%=course[22]%>
+    </ul>
+  </div>
+
+  <div class="card twoEl">
+    <h1><%=year[13].text%></h1>
+    <ul>
+      <%=course[23]%>
+      <li><br/></li>
+      <%=course[24]%>
+    </ul>
+  </div>
+
+  <div class="card threeEl">
+    <h1><%=year[14].text%></h1>
+    <ul>
+      <%=course[25]%>
+      <li><br/></li>
+      <%=course[26]%>
+      <li><br/></li>
+      <%=course[27]%>
+    </ul>
+  </div>
+
+  <div class="card threeEl">
+    <h1><%=year[15].text%></h1>
+    <ul>
+      <%=course[28]%>
+      <li><br/></li>
+      <%=course[29]%>
+      <li><br/></li>
+      <%=course[30]%>
+    </ul>
+  </div>
+
+  <div class="card twoEl">
+    <h1><%=year[16].text%></h1>
+    <ul>
+      <%=course[31]%>
+      <li><br/></li>
+      <%=course[32]%>
+    </ul>
+  </div>
+
+  <div class="card threeEl">
+    <h1><%=year[17].text%></h1>
+    <ul>
+      <%=course[33]%>
+      <li><br/></li>
+      <%=course[34]%>
+      <li><br/></li>
+      <%=course[35]%>
+    </ul>
+  </div>
+</div>

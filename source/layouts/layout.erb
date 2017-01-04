@@ -1,0 +1,53 @@
+<!doctype html>
+<!-- Created (Sam Yinger 10/17): HTML for the header and footer. -->
+<!-- Updated (Sam Yinger 10/18): Changed locations and references. -->
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title><%= current_page.data.title || 'Dr. Jim Davis' %></title> <!-- Use title if it's in the page YAML frontmatter -->
+    <link href="stylesheets/site.css" rel="stylesheet" />
+  </head>
+  <body class="<%= page_classes %>">
+    <header>
+      <div role="navigation" id="page_navbar">
+        <div class="head_container">
+          <div id="osu_univ">
+            <a href="http://osu.edu"><img src="images/osu-32px-horiz.png" alt="OSU"></a> <!--The Ohio State University Logo-->
+            <div id="name">
+              <a title="Jim Davis, Photo by Tom Dodge, Columbus Dispatch, 2009" id="popOut" class="font_stand">Dr. Jim Davis</a>
+            </div>
+          </div>
+          <div class="website_links">
+            <div class="links" id="font_stand">
+              <ul id="listLinks">
+                <!--Links to other pages-->
+                <li><a href="index.html" class="font_stand">Home</a></li>
+                <li><a href="people.html" class="font_stand">People</a></li>
+                <li><a href="pictures.html" class="font_stand">Pictures</a></li>
+                <li><a href="publications.html" class="font_stand">Publications</a></li>
+                <li><a href="teaching.html" class="font_stand">Teaching</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <%= yield %>
+    <footer>
+      <div class="background">
+        <div id="footer" class="boxed">
+          <div class="container">
+            <p class="font_stand" id="footer_info">
+              This page is maintained by: Cleveland Endians<br>
+              491 Dreese Laboratories, 2015 Neil Avenue, Columbus, OH 43210<br>
+              Office Phone: (614) 292-1553 / Lab Phone: 614-292-5137 / Fax: (614) 292-2911<br>
+              Email: <a href="javascript:window.location='mailto:jwdavis' + '@' + 'cse.ohio-state.edu'">jwdavis@cse.ohio-state.edu</a><br>
+              <a href="directions.html">Directions to my Office</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

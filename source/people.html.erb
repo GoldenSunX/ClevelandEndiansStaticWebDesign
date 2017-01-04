@@ -1,0 +1,33 @@
+<!-- Created (Andrew Fox 10/17): HTML page for getting people information from the original website and displaying it. -->
+<!-- Updated (Andrew Fox 10/18): Changed a few locations of tags, putting the headings within divs. -->
+<!-- Updated (David Sinchok 10/19): Changed class tags to allow for cascading thus cleaning up the code a bit. -->
+
+<div class="background">
+  <div style="margin-left: 17.5%; margin-right: 17.5%;">
+    <div style="text-align: center"><h1 class="header">People</h1></div>
+    <div class="boxed" style="text-align: center">
+      <div style="text-align: center"><h2 class="header_small">Current Students</h2></div>
+        <!-- Get information from original website and display current students. -->
+        <ul class="unordered_list_no_indent">
+        <% require 'open-uri' %>
+        <% require 'nokogiri' %>
+        <% doc = Nokogiri::HTML(open('http://web.cse.ohio-state.edu/~jwdavis/people.html')) %>
+        <% table_set = doc.xpath('.//ul/li') %>
+        <% 6.times do %>
+            <li><%= table_set.shift.content.strip %></li>
+        <% end %>
+        </ul>
+    </div>
+
+    <div class="boxed">
+      <div style="text-align: center"><h2 class="header_small">Alumni</h2></div>
+      <table class="data_table">
+        <tr><th>Name</th><th>Information</th></tr>
+        <% underline_set = table_set.xpath('.//u') %>
+        <% underline_set.length.times do %>
+            <tr><td><%= underline_set.shift.content.strip %></td><td><%= table_set.shift.xpath('text()').text.strip %></td></tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
